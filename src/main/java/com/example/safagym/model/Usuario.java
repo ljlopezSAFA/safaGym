@@ -2,7 +2,7 @@ package com.example.safagym.model;
 
 import com.example.safagym.enums.Rol;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +12,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "usuario" , catalog = "postgres", schema = "safagym")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(exclude = {"token"})
 public class Usuario implements UserDetails {
 
     @Id
@@ -28,6 +32,9 @@ public class Usuario implements UserDetails {
 
     @Column(name = "rol")
     private Rol rol;
+
+    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Token token;
 
 
     @Override

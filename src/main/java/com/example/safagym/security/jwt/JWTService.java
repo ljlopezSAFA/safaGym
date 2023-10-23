@@ -1,5 +1,6 @@
 package com.example.safagym.security.jwt;
 
+import com.example.safagym.enums.Rol;
 import com.example.safagym.model.Usuario;
 import com.example.safagym.security.auth.TokenDataDTO;
 import com.example.safagym.service.UsuarioService;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Service
 public class JWTService {
@@ -61,7 +64,13 @@ public class JWTService {
 
     public TokenDataDTO extractTokenData(String token){
         Claims claims = extractDatosToken(token);
-        return (TokenDataDTO) claims.get("tokenDataDTO");
+        Map<String, Object> mapa =  (LinkedHashMap<String,Object>) claims.get("tokenDataDTO");
+        return TokenDataDTO.builder()
+                .username((String) mapa.get("username"))
+                .fecha_creacion((Long) mapa.get("fecha_creacion"))
+                .fecha_expiracion((Long) mapa.get("fecha_expiracion"))
+                .rol((String) mapa.get("rol"))
+                .build();
     }
 
     /**
