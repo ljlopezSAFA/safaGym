@@ -1,6 +1,5 @@
 package com.example.safagym.security.jwt;
 
-import com.example.safagym.enums.Rol;
 import com.example.safagym.model.Usuario;
 import com.example.safagym.security.auth.TokenDataDTO;
 import com.example.safagym.service.UsuarioService;
@@ -11,7 +10,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
