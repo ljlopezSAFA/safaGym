@@ -33,9 +33,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req ->
                         req
                                 .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/admin/**").hasAnyRole(Rol.ADMIN.name())
-                                .requestMatchers("/clases/gestion/**").hasAnyRole(Rol.MONITOR.name())
-                                .requestMatchers("/clases/cliente/**").hasAnyRole(Rol.USUARIO.name())
+                                .requestMatchers("/admin/**").hasAnyAuthority(Rol.ADMIN.name())
+                                .requestMatchers("/clases/gestion/**").hasAnyAuthority(Rol.MONITOR.name())
+                                .requestMatchers("/clases/cliente/**").hasAnyAuthority(Rol.USUARIO.name())
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))

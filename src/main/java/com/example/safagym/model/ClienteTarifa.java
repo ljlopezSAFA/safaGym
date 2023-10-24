@@ -3,6 +3,8 @@ package com.example.safagym.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "cliente" , catalog = "postgres", schema = "safagym")
 @Getter
@@ -10,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Cliente {
+public class ClienteTarifa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,18 +22,15 @@ public class Cliente {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "apellido1")
-    private String apellido1;
+    @Column(name = "fecha_inicio")
+    private LocalDate fechaInicio;
 
-    @Column(name = "apellido2")
-    private String apellido2;
+    @Column(name = "fecha_fin")
+    private LocalDate fechaFin;
 
     @Column(name = "dni")
     private String dni;
 
     @Column(name = "email")
     private String email;
-
-
-
 }
