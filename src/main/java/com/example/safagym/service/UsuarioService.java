@@ -38,4 +38,8 @@ public class UsuarioService implements UserDetailsService {
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         return  usuarioRepository.save(usuarioMapper.toEntity(dto));
     }
+
+    public boolean validarPassword(Usuario usuario, String passwordSinEncriptar){
+        return passwordEncoder.matches(passwordSinEncriptar, usuario.getPassword());
+    }
 }

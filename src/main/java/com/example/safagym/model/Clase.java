@@ -1,7 +1,6 @@
 package com.example.safagym.model;
 
 import com.example.safagym.enums.TipoClase;
-import com.example.safagym.enums.TipoMonitor;
 import jakarta.persistence.*;
 import lombok.*;
 

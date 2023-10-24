@@ -31,4 +31,13 @@ public class Tarifa {
     @Column(name = "incluye_clases")
     private boolean incluyeClases;
 
+    @Column(name = "incluye_parking")
+    private boolean incluyeParking;
+
+    @Column(name = "incluye_ludoteca")
+    private boolean incluyeLudoteca;
+
+    @Column(name = "incluye_bebidas_energeticas")
+    private boolean incluyeBebidasEnergeticas;
+
 }
