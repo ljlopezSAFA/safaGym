@@ -19,18 +19,12 @@ public class ClienteTarifa {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nombre")
-    private String nombre;
-
     @Column(name = "fecha_inicio")
     private LocalDate fechaInicio;
 
     @Column(name = "fecha_fin")
     private LocalDate fechaFin;
 
-    @Column(name = "dni")
-    private String dni;
-
-    @Column(name = "email")
-    private String email;
+    @Column(name = "pagado")
+    private boolean pagado;
 }
