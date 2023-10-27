@@ -1,9 +1,12 @@
 package com.example.safagym.security.auth;
 
+import com.example.safagym.dto.ClienteDTO;
 import com.example.safagym.dto.UsuarioDTO;
+import com.example.safagym.model.Cliente;
 import com.example.safagym.model.Token;
 import com.example.safagym.model.Usuario;
 import com.example.safagym.security.jwt.JWTService;
+import com.example.safagym.service.ClienteService;
 import com.example.safagym.service.TokenService;
 import com.example.safagym.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,9 @@ public class AuthController {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private ClienteService clienteService;
 
 
     @PostMapping("/login")
@@ -76,9 +82,11 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public AuthDTO register(@RequestBody UsuarioDTO usuarioDTO) {
-        Usuario usuarioNuevo = usuarioService.save(usuarioDTO);
-        String token = jwtService.generateToken(usuarioNuevo);
+    public AuthDTO register(@RequestBody ClienteDTO clienteDTO) {
+
+        Cliente clieneNuevo = clienteService.save(clienteDTO);
+
+        String token = jwtService.generateToken(clieneNuevo.getUsuario());
 
         return AuthDTO
                 .builder()

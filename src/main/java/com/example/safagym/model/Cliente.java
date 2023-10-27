@@ -2,6 +2,7 @@ package com.example.safagym.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "cliente" , catalog = "postgres", schema = "safagym")
@@ -31,6 +32,10 @@ public class Cliente {
 
     @Column(name = "email")
     private String email;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
 
 

@@ -23,10 +23,6 @@ public class JWTService {
     @Value("${application.security.jwt.secret-key}")
     private String secretKey;
 
-    @Autowired
-    private UsuarioService usuarioService;
-
-
     /**
      * Método para generar token de acceso a través de los datos
      * de un usuario
