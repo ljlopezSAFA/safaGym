@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req ->
                         req
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/cliente/**").hasAnyAuthority(Rol.ADMIN.name())
                                 .requestMatchers("/admin/**").hasAnyAuthority(Rol.ADMIN.name())
                                 .requestMatchers("/clases/gestion/**").hasAnyAuthority(Rol.MONITOR.name())
                                 .requestMatchers("/clases/cliente/**").hasAnyAuthority(Rol.USUARIO.name())
