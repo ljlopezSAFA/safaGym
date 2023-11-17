@@ -32,7 +32,17 @@ public class ClienteService {
         return clienteRepository.save(entity);
     }
 
-    public List<ClienteDTO> buscarPorNombre(String nombre){
-        return clienteMapper.toDTO(clienteRepository.buscarPorNombre(nombre));
+
+    public List<ClienteDTO> buscarClientePorFiltror(String nombre, String letraDNI){
+        if(nombre!= null && letraDNI != null){
+            return clienteMapper.toDTO(clienteRepository.buscarPorLetraDNIYNombre(letraDNI,nombre));
+        } else if (nombre==null && letraDNI!=null) {
+            return clienteMapper.toDTO(clienteRepository.buscarPorLetraDNI(letraDNI));
+        }else if(nombre != null){
+            return clienteMapper.toDTO(clienteRepository.buscarPorNombre(nombre));
+        }else{
+            return clienteMapper.toDTO(clienteRepository.findAll());
+        }
     }
+
 }
